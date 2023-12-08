@@ -312,3 +312,37 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <h1>W12</h1>
 <p>用chatgpt來讀取座位名單跟排列座號</p>
 <p><a href="https://chat.openai.com/share/cf7644b8-3bfe-4efd-90d6-9edd9239dda8">https://chat.openai.com/share/cf7644b8-3bfe-4efd-90d6-9edd9239dda8</a></p>
+<p>將顯示錯誤的部分刪掉的程式碼</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">file_path = 'y:/2a_w12_seat.txt'  # 更換成你的檔案路徑
+# 儲存讀取的資料
+
+students = []
+
+with open(file_path, 'r') as file:
+    for line_number, line in enumerate(file, 1):  # 追蹤行號
+        # 移除換行符號並以 Tab 鍵分割內容
+        data = line.strip().split('\t')
+        
+        # 確保分割後的內容符合預期的格式
+        if len(data) == 2:
+            try:
+                # 將第一個元素轉換為整數
+                number = int(data[0])
+                
+                # 將第二個元素轉換為元組
+                tuple_str = data[1].strip('()')
+                tuple_values = tuple(map(int, tuple_str.split(',')))
+                
+                # 儲存學生資料到清單中
+                students.append((number, tuple_values))
+            except ValueError as e:
+                
+                continue  # 忽略這行資料
+   
+# 根據座位位置排序學生
+sorted_students = sorted(students, key=lambda x: (x[1][0], x[1][1]))
+
+# 輸出排序後的結果
+for student in sorted_students:
+    print(student)</pre>
+<p></p>
