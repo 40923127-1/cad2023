@@ -42,7 +42,7 @@ while True:
     if res > 0:
         if current_position1[0] < current_position2[0]:
             # 對鋼球質心施以一個向量力
-            sim.addForceAndTorque(marble, [500, 0, -75], [0, 0, 0])
+            sim.addForceAndTorque(marble, [700, 0, -90], [0, 0, 0])
 
 # Stop the simulation
 sim.stopSimulation()
