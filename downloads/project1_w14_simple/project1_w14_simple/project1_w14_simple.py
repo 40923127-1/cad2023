@@ -11,7 +11,7 @@ import keyboard
 # 但若第一輸入變數為可連外的 IPv4 或 IPv6 address, 則可用來控制遠端電腦上的模擬場景
 # 23000 為 CoppeliaSim 使用 ZMQ remote API 連線控制時內定的網路埠號
 # client 與 server 的防火牆或代理主機必須讓此埠號的封包 (socket) 通過
-client = RemoteAPIClient('localhost', 23000)
+client = RemoteAPIClient('[2001:288:6004:17:2023:cada::3]', 23000)
 
 # 利用 getObject 取得場景中的 "sim" 物件參考對應值
 sim = client.getObject('sim')
