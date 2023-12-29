@@ -27,6 +27,7 @@ sensor = sim.getObject('./sensor')
 sim.setObjectInt32Param(marble, sim.shapeintparam_static, 0)
 
 # 主模擬程序
+sim.addForceAndTorque(marble, [5, 0, 0], [0, 0, 0])
 while True:
     if keyboard.is_pressed('q'):
         # 模擬執行期間, 將滑鼠停在場景, 鍵盤按下 q 可以終止模擬
@@ -42,7 +43,7 @@ while True:
     if res > 0:
         if current_position1[0] < current_position2[0]:
             # 對鋼球質心施以一個向量力
-            sim.addForceAndTorque(marble, [150, 0, -70], [0, 0, 0])
+            sim.addForceAndTorque(marble, [20, 0, -70], [0, 0, 0])
 
 # Stop the simulation
 sim.stopSimulation()

@@ -291,12 +291,28 @@ doc["threejsblock"].bind("click", threejsblock.do)
 </p>
 <p></p>
 <h1>ssH</h1>
-<p>影片名字用gitpush.mp4wink會抓不到</p>
-<p>改成git.mp4就可以</p>
+<p>把public key放到github，在putty裡選擇private key的路徑</p>
+<p><img alt="" height="435" src="/images/1.png" width="456"/></p>
 <p></p>
 <div class="winkVideoContainerClass"><video class="winkVideoClass" controls="controls" data-dirname="/static" data-varname="123" height="630" width="1008">
 <source src="/downloads/git.mp4" type="video/mp4"/></video></div>
-<h1>作業1</h1>
+<div class="winkVideoContainerClass">
+<p>影片名字用gitpush.mp4wink會抓不到</p>
+<p>改成git.mp4就可以</p>
+<h1>倉儲與網站評分項目:</h1>
+<p><span>A: 是否<span>按照進度明確標示倉儲的改版歷程</span></span></p>
+<p><span>B: 是否根據<span> </span><span>IPv4 與 IPv6</span><span> </span>網路環境設定進行作法討論</span></p>
+<p><span>C: 是否就<span><span> </span>Replit、s.cycu.org 與 localhost</span><span> </span>情境下對個人與分組倉儲進行設定操作</span></p>
+<p><span>D: 是否就所分配的<span> </span><span>CAD 套件</span>從安裝設定到繪圖提供內容參考</span></p>
+<p><span>E: 是否使用所分配的 CAD 套件完成<span>專案一零組件繪圖</span>, 並提供零組件下載</span></p>
+<p><span>F: 是否將自行繪製的專案一零組件<span>轉入 CoppeliaSim</span></span></p>
+<p><span>G: 是否利用<span> </span><span>ZMQ Remote API Python</span><span> </span>對專案一轉入的零組件設定感測器, 並進行<span>鋼球永動模擬</span></span></p>
+<p><span>H: 是否實際操作<span> </span><span>Triangle 軌道系統</span>的鋼球永動模擬</span></p>
+<p><span>I: 是否完成 W15 的平面雙 U 迴路上的<span>鋼球永動系統繪圖、轉檔與系統模擬</span></span></p>
+<p><span>J: 是否使用所分配的 CAD 套件完成<span>專案二 1D 平台零組件繪圖</span>, 並提供零組件下載</span></p>
+<p><span>K: 是否利用<span> </span><span>ZMQ Remote API Python</span><span> </span>對專案二轉入的零組件設定感測器, 並進行鋼球永動模擬</span></p>
+<p><span>L: 是否針對專案二的 1D 平台鋼球平衡系統所需的<span> </span><span>PID 控制理論</span>進行資料收集與 ChatGPT 對答</span></p>
+</div><h1>作業1</h1>
 <p><a href="https://40923127-1.github.io/cad2023_ag6/content/(%E4%B8%89)NX.html">NX繪圖過程</a></p>
 <p>球要開這3個設定 不然sensor感測不到</p>
 <p><img alt="" height="391" src="/images/coppeliaSim_AmD9gBy2vD.png" width="800"/></p>
@@ -360,7 +376,7 @@ for student in sorted_students:
 <p>至少會動了，雖然上不去</p>
 <p><img alt="" height="515" src="/images/coppeliaSim_OCYkVzkiwK1221.gif" width="960"/></p>
 <h2>W15</h2>
-<h3>1.在solidworks進行繪圖</h3>
+<p><a href="https://nfuedu-my.sharepoint.com/personal/40923127_nfu_edu_tw/_layouts/15/onedrive.aspx?ga=1&amp;id=%2Fpersonal%2F40923127%5Fnfu%5Fedu%5Ftw%2FDocuments%2Fcad2023%2F%E4%BD%9C%E6%A5%AD1%2FW15">檔案</a></p><h3>1.在solidworks進行繪圖</h3>
 <div class="winkVideoContainerClass"><video class="winkVideoClass" controls="controls" data-dirname="/static" data-varname="123" height="630" width="1008">
 <source src="/downloads/w15/wink/sw.mp4" type="video/mp4"/></video></div><h3>2.假設控制盒內有個電磁線圈進行加速，但沒有畫出來</h3>
 <p>就畫了個能放上軌道的底座</p>
@@ -368,5 +384,58 @@ for student in sorted_students:
 <p></p>
 <div class="winkVideoContainerClass"><video class="winkVideoClass" controls="controls" data-dirname="/static" data-varname="123" height="630" width="1008">
 <source src="/downloads/w15/wink/cop.mp4" type="video/mp4"/></video></div><h3>4.設定sensor位置和程式施力</h3>
-<h3>5.localhost控制自己的</h3>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 以下的 zmq 程式庫已經過修改, 可以在 IPv4 與 IPv6 環境下使用
+# 針對 CoppeliaSim 的 zmq 延伸程式, Python 需要安裝 cbor 與 pyzmq 等兩個模組
+# pip install cbor pyzmq
+from zmqRemoteApi_IPv6 import RemoteAPIClient
+# 由於在 zmq 程式執行時, 希望讓使用者可以透過鍵盤 (或其他電子電機訊號) 指令控制遠端的機電模擬場景
+# Python 程式環境還需要安裝 keyboard 模組, pip install keyboard
+import keyboard
+import time
+
+# 利用以下程式碼連接 CoppeliaSim remote API server
+#第一個輸入變數若為 localhost 則只能控制與程式同在的場景
+# 但若第一輸入變數為可連外的 IPv4 或 IPv6 address, 則可用來控制遠端電腦上的模擬場景
+# 23000 為 CoppeliaSim 使用 ZMQ remote API 連線控制時內定的網路埠號
+# client 與 server 的防火牆或代理主機必須讓此埠號的封包 (socket) 通過
+client = RemoteAPIClient('localhost', 23000)
+
+# 利用 getObject 取得場景中的 "sim" 物件參考對應值
+sim = client.getObject('sim')
+
+# 利用 sim 物件的 startSimulation() 方法啟動場景模擬
+sim.startSimulation()
+
+# 利用 getObject 取得 'marble' and 'sensor'  物件的參考對應值
+marble = sim.getObject('./marble')
+sensor = sim.getObject('./sensor')
+# 透過變數屬性設定方法將 marble 設為 non-static, 意即具有 dynamic 特性
+sim.setObjectInt32Param(marble, sim.shapeintparam_static, 0)
+sim.addForceAndTorque(marble, [1, 0, 0], [0, 0, 0]) # 給球一個初始的力
+
+
+# 主模擬程序
+while True:
+    if keyboard.is_pressed('q'):
+        # 模擬執行期間, 將滑鼠停在場景, 鍵盤按下 q 可以終止模擬
+        break
+
+    r, dist, pt, obj, normal = sim.handleProximitySensor(sensor)
+    res, dist2, point, obj2, n = sim.readProximitySensor(sensor)
+    # Get the current position of the marble
+    current_position1 = sim.getObjectPosition(marble, -1)
+    current_position2 = sim.getObjectPosition(marble, -1)
+ 
+
+    if res &gt; 0:
+        if current_position1[0] &lt;=current_position2[0]:
+            # 對鋼球質心施以一個向量力
+            sim.addForceAndTorque(marble, [25, 0, 0], [0, 0, 0])
+            print("加速") # 看有沒有正常加速
+        time.sleep(0.1)  # 加入 0.1 秒的延遲，調整感測器的判斷頻率
+
+# Stop the simulation
+sim.stopSimulation()
+</pre>
+<br/><br/><br/><h3>5.localhost控制自己的</h3>
 <h3>6.ipv6控制其他人的</h3>
