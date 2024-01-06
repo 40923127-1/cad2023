@@ -347,7 +347,40 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <h2>W12</h2>
 <p>用chatgpt來讀取座位名單跟排列座號</p>
 <p><a href="https://chat.openai.com/share/cf7644b8-3bfe-4efd-90d6-9edd9239dda8">https://chat.openai.com/share/cf7644b8-3bfe-4efd-90d6-9edd9239dda8</a></p>
-<h2>W14</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">file_path = 'y:/2a_w12_seat.txt'  # 更換成你的檔案路徑
+# 儲存讀取的資料
+
+students = []
+
+with open(file_path, 'r') as file:
+    for line_number, line in enumerate(file, 1):  # 追蹤行號
+        # 移除換行符號並以 Tab 鍵分割內容
+        data = line.strip().split('\t')
+        
+        # 確保分割後的內容符合預期的格式
+        if len(data) == 2:
+            try:
+                # 將第一個元素轉換為整數
+                number = int(data[0])
+                
+                # 將第二個元素轉換為元組
+                tuple_str = data[1].strip('()')
+                tuple_values = tuple(map(int, tuple_str.split(',')))
+                
+                # 儲存學生資料到清單中
+                students.append((number, tuple_values))
+            except ValueError as e:
+                
+                continue  # 忽略這行資料
+   
+# 根據座位位置排序學生
+sorted_students = sorted(students, key=lambda x: (x[1][0], x[1][1]))
+
+# 輸出排序後的結果
+for student in sorted_students:
+    print(student)</pre>
+<p></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/puh6kp4N5r8?si=YvXrxl7wkPwSofW4" title="YouTube video player" width="560"></iframe></p><h2>W14</h2>
 <p><a href="https://nfuedu-my.sharepoint.com/personal/40923127_nfu_edu_tw/_layouts/15/onedrive.aspx?ga=1&amp;id=%2Fpersonal%2F40923127%5Fnfu%5Fedu%5Ftw%2FDocuments%2Fcad2023%2F%E4%BD%9C%E6%A5%AD1%2Fw14">用到的檔案</a></p>
 <p>至少會動了，雖然上不去</p>
 <p><img alt="" height="515" src="/images/coppeliaSim_OCYkVzkiwK1221.gif" width="960"/></p>
@@ -529,51 +562,4 @@ sim.stopSimulation()
 <p></p>
 <div class="winkVideoContainerClass"><video class="winkVideoClass" controls="controls" data-dirname="/static" data-varname="123" height="630" width="1008">
 <source src="/downloads/w16/cp.mp4" type="video/mp4"/></video></div>
-<h1>12</h1>
-<p></p>
-<p></p>
-<p></p>
-<p>在網頁上執行 Brython 程式</p>
-<!-- 引入 Brython -->
-<script src="https://cdn.jsdelivr.net/npm/brython@3.9.5/brython.min.js" type="text/javascript"></script>
-<h4>排序後的學生</h4>
-<p><button id="executeButton">執行程式</button> </p>
-<h4>結果：</h4>
-<p><textarea cols="50" id="resultTextArea" readonly="readonly" rows="10"></textarea></p>
-<script type="text/python">
-        from browser import document, ajax
-
-        def process_data(file_content):
-            students = []
-            for line_number, line in enumerate(file_content.splitlines(), 1):
-                data = line.strip().split('\t')
-                if len(data) == 2:
-                    try:
-                        number = int(data[0])
-                        tuple_str = data[1].strip('()')
-                        tuple_values = tuple(map(int, tuple_str.split(',')))
-                        students.append((number, tuple_values))
-                    except ValueError as e:
-                        continue
-
-            sorted_students = sorted(students, key=lambda x: (x[1][0], x[1][1]))
-
-            result_textarea = document.getElementById('resultTextArea')
-            result_textarea.value = ''  # 清空文本區域
-
-            for student in sorted_students:
-                result_textarea.value += f"學號: {student[0]}, 座位號: {student[1]}\n"
-
-        def get_data(response):
-            if response.status == 200:
-                file_content = response.text
-                process_data(file_content)
-
-        def execute_program(ev):
-            url = 'https://mde.tw/cadnote/downloads/2a_w12_seat.txt'  # 更換成你的檔案路徑
-            ajax.get(url, oncomplete=get_data)
-
-        # 當按鈕被點擊時執行程式
-        document["executeButton"].bind("click", execute_program)
-    
-</script></div>
+<h1>test</h1></div>

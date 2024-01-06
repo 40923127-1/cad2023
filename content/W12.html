@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='Brython.html'>Brython</a><li class='has-children'><a href='ssH.html'>ssH</a><ul class='dropdown'><li><a href='網址帳號認證.html'>網址帳號認證</a></li></ul><li class='has-children'><a href='倉儲管理.html'>倉儲管理</a><ul class='dropdown'><li><a href='Replit.html'>Replit</a></li></ul><li><a href='倉儲與網站評分項目:.html'>倉儲與網站評分項目:</a><li><a href='作業1.html'>作業1</a><li><a href='檔案.html'>檔案</a><li class='has-children'><a href='wink.html'>wink</a><ul class='dropdown'><li><a href='wink嵌入.html'>wink嵌入</a></li></ul><li class='has-children'><a href='每周進度.html'>每周進度</a><ul class='dropdown'><li><a href='W12.html'>W12</a><li><a href='W14.html'>W14</a><li class='has-children'><a href='W15.html'>W15</a><ul class='dropdown'><li><a href='1.在solidworks進行繪圖.html'>1.在solidworks進行繪圖</a><li><a href='2.假設控制盒內有個電磁線圈進行加速，但沒有畫出來.html'>2.假設控制盒內有個電磁線圈進行加速，但沒有畫出來</a><li><a href='3.stl檔轉入coppeliasim.html'>3.stl檔轉入coppeliasim</a><li><a href='4.設定sensor位置和程式施力.html'>4.設定sensor位置和程式施力</a><li><a href='5.localhost控制自己的.html'>5.localhost控制自己的</a><li><a href='6.ipv6控制其他人的.html'>6.ipv6控制其他人的</a></li></ul><li><a href='W16.html'>W16</a></li></ul><li><a href='12.html'>12</a></li>
+                     <li><a href='About.html'>About</a><li><a href='Brython.html'>Brython</a><li class='has-children'><a href='ssH.html'>ssH</a><ul class='dropdown'><li><a href='網址帳號認證.html'>網址帳號認證</a></li></ul><li class='has-children'><a href='倉儲管理.html'>倉儲管理</a><ul class='dropdown'><li><a href='Replit.html'>Replit</a></li></ul><li><a href='倉儲與網站評分項目:.html'>倉儲與網站評分項目:</a><li><a href='作業1.html'>作業1</a><li><a href='檔案.html'>檔案</a><li class='has-children'><a href='wink.html'>wink</a><ul class='dropdown'><li><a href='wink嵌入.html'>wink嵌入</a></li></ul><li class='has-children'><a href='每周進度.html'>每周進度</a><ul class='dropdown'><li><a href='W12.html'>W12</a><li><a href='W14.html'>W14</a><li class='has-children'><a href='W15.html'>W15</a><ul class='dropdown'><li><a href='1.在solidworks進行繪圖.html'>1.在solidworks進行繪圖</a><li><a href='2.假設控制盒內有個電磁線圈進行加速，但沒有畫出來.html'>2.假設控制盒內有個電磁線圈進行加速，但沒有畫出來</a><li><a href='3.stl檔轉入coppeliasim.html'>3.stl檔轉入coppeliasim</a><li><a href='4.設定sensor位置和程式施力.html'>4.設定sensor位置和程式施力</a><li><a href='5.localhost控制自己的.html'>5.localhost控制自己的</a><li><a href='6.ipv6控制其他人的.html'>6.ipv6控制其他人的</a></li></ul><li><a href='W16.html'>W16</a></li></ul><li><a href='test.html'>test</a></li>
                       </ul>
                 </nav>
               </div>
@@ -145,7 +145,40 @@ img.add_border {
     <div id="tipue_search_content">每周進度 << <a href='每周進度.html'>Previous</a> <a href='W14.html'>Next</a> >> W14<br /><h1>W12</h1>
 <p>用chatgpt來讀取座位名單跟排列座號</p>
 <p><a href="https://chat.openai.com/share/cf7644b8-3bfe-4efd-90d6-9edd9239dda8">https://chat.openai.com/share/cf7644b8-3bfe-4efd-90d6-9edd9239dda8</a></p>
-<br />每周進度 << <a href='每周進度.html'>Previous</a> <a href='W14.html'>Next</a> >> W14</div>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">file_path = 'y:/2a_w12_seat.txt'  # 更換成你的檔案路徑
+# 儲存讀取的資料
+
+students = []
+
+with open(file_path, 'r') as file:
+    for line_number, line in enumerate(file, 1):  # 追蹤行號
+        # 移除換行符號並以 Tab 鍵分割內容
+        data = line.strip().split('\t')
+        
+        # 確保分割後的內容符合預期的格式
+        if len(data) == 2:
+            try:
+                # 將第一個元素轉換為整數
+                number = int(data[0])
+                
+                # 將第二個元素轉換為元組
+                tuple_str = data[1].strip('()')
+                tuple_values = tuple(map(int, tuple_str.split(',')))
+                
+                # 儲存學生資料到清單中
+                students.append((number, tuple_values))
+            except ValueError as e:
+                
+                continue  # 忽略這行資料
+   
+# 根據座位位置排序學生
+sorted_students = sorted(students, key=lambda x: (x[1][0], x[1][1]))
+
+# 輸出排序後的結果
+for student in sorted_students:
+    print(student)</pre>
+<p></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/OPUBHy3GgXc?si=ZkXdrU_pWqIH3oT-" title="YouTube video player" width="560"></iframe></p><br />每周進度 << <a href='每周進度.html'>Previous</a> <a href='W14.html'>Next</a> >> W14</div>
         
     <!-- footer -->
       <div class="container">
