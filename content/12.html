@@ -144,6 +144,7 @@ img.add_border {
         </header>
     <div id="tipue_search_content">W16 << <a href='W16.html'>Previous</a> <br /><h1>12</h1>
 <p></p>
+<p>&lt;</p>
 <p></p>
 <p>在網頁上執行 Brython 程式</p>
 <!-- 引入 Brython -->
@@ -153,7 +154,7 @@ img.add_border {
 <h4>結果：</h4>
 <p><textarea cols="50" id="resultTextArea" readonly="readonly" rows="10"></textarea></p>
 <script type="text/python">
-        from browser import document, ajax
+        from browser import document, ajax, console
 
         def process_data(file_content):
             students = []
@@ -182,6 +183,7 @@ img.add_border {
                 process_data(file_content)
 
         def execute_program(ev):
+            console.log("按鈕被點擊了")  # 在控制台中顯示訊息
             url = 'https://mde.tw/cadnote/downloads/2a_w12_seat.txt'  # 更換成你的檔案路徑
             ajax.get(url, oncomplete=get_data)
 
