@@ -29,7 +29,7 @@ while True:
             sim.addForceAndTorque(marble, [750, 0, -75], [0, 1.5, 0])
             print("Acceleration")
 
-    time.sleep(0.1)  # 加入 0.1 秒的延遲，調整感測器的判斷頻率
+    #time.sleep(0.1)  # 加入 0.1 秒的延遲，調整感測器的判斷頻率
 
 sim.stopSimulation()
 s

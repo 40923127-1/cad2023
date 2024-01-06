@@ -294,7 +294,8 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p>把public key放到github，在putty裡選擇private key的路徑</p>
 <p><img alt="" height="435" src="/images/1.png" width="456"/></p>
 <p>到新環境前要先把登陸黨提取出來，這樣到新環境就不用重設了</p>
-<p><img alt="" height="87" src="/images/螢幕擷取畫面 2024-01-05 012705.png" width="476"/></p><h2>網址帳號認證</h2>
+<p><img alt="" height="87" src="/images/螢幕擷取畫面 2024-01-05 012705.png" width="476"/></p>
+<h2>網址帳號認證</h2>
 <p></p>
 <div class="winkVideoContainerClass"><video class="winkVideoClass" controls="controls" data-dirname="/static" data-varname="123" height="630" width="1008">
 <source src="/downloads/git.mp4" type="video/mp4"/></video></div>
@@ -305,7 +306,8 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <h2>Replit</h2>
 <p>1 2</p>
 <div class="winkVideoContainerClass"><video class="winkVideoClass" controls="controls" data-dirname="/static" data-varname="123" height="630" width="1008">
-<source src="/downloads/w16/replit.mp4" type="video/mp4"/></video></div><h1>倉儲與網站評分項目:</h1>
+<source src="/downloads/w16/replit.mp4" type="video/mp4"/></video></div>
+<h1>倉儲與網站評分項目:</h1>
 <p><span>A: 是否<span>按照進度明確標示倉儲的改版歷程</span></span></p>
 <p><span>B: 是否根據<span> </span><span>IPv4 與 IPv6</span><span> </span>網路環境設定進行作法討論</span></p>
 <p><span>C: 是否就<span><span> </span>Replit、s.cycu.org 與 localhost</span><span> </span>情境下對個人與分組倉儲進行設定操作</span></p>
@@ -330,12 +332,14 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <h1>檔案</h1>
 <p></p>
 <p><a href="https://nfuedu-my.sharepoint.com/:f:/g/personal/40923127_nfu_edu_tw/Etg0CE8FDQVNsuOz9I52JNoBAfz-QaH8i7fxj2c-MyZEfA?e=D0SKY7">檔案</a></p>
-<p></p><h1>wink</h1>
+<p></p>
+<h1>wink</h1>
 <p></p>
 <h4>出現錯誤</h4>
 <p><img alt="" height="407" src="/images/winkerror.png" width="800"/></p>
 <p>1008*603的格式不可以，會出現轉換錯誤</p>
-<p>縮放成1008*630就可以了</p><h2>wink嵌入</h2>
+<p>縮放成1008*630就可以了</p>
+<h2>wink嵌入</h2>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">&lt;div class="winkVideoContainerClass"&gt;&lt;video width="1008" height="630" class="winkVideoClass" controls="controls" data-dirname="/static" data-varname="123"&gt;
 &lt;source src="/downloads/git.mp4" type="video/mp4" /&gt;&lt;/video&gt;&lt;/div&gt;</pre>
 <p><br/><br/></p>
@@ -343,52 +347,23 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <h2>W12</h2>
 <p>用chatgpt來讀取座位名單跟排列座號</p>
 <p><a href="https://chat.openai.com/share/cf7644b8-3bfe-4efd-90d6-9edd9239dda8">https://chat.openai.com/share/cf7644b8-3bfe-4efd-90d6-9edd9239dda8</a></p>
-<p>將顯示錯誤的部分刪掉的程式碼</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">file_path = 'y:/2a_w12_seat.txt'  # 更換成你的檔案路徑
-# 儲存讀取的資料
-
-students = []
-
-with open(file_path, 'r') as file:
-    for line_number, line in enumerate(file, 1):  # 追蹤行號
-        # 移除換行符號並以 Tab 鍵分割內容
-        data = line.strip().split('\t')
-        
-        # 確保分割後的內容符合預期的格式
-        if len(data) == 2:
-            try:
-                # 將第一個元素轉換為整數
-                number = int(data[0])
-                
-                # 將第二個元素轉換為元組
-                tuple_str = data[1].strip('()')
-                tuple_values = tuple(map(int, tuple_str.split(',')))
-                
-                # 儲存學生資料到清單中
-                students.append((number, tuple_values))
-            except ValueError as e:
-                
-                continue  # 忽略這行資料
-   
-# 根據座位位置排序學生
-sorted_students = sorted(students, key=lambda x: (x[1][0], x[1][1]))
-
-# 輸出排序後的結果
-for student in sorted_students:
-    print(student)</pre>
 <h2>W14</h2>
 <p><a href="https://nfuedu-my.sharepoint.com/personal/40923127_nfu_edu_tw/_layouts/15/onedrive.aspx?ga=1&amp;id=%2Fpersonal%2F40923127%5Fnfu%5Fedu%5Ftw%2FDocuments%2Fcad2023%2F%E4%BD%9C%E6%A5%AD1%2Fw14">用到的檔案</a></p>
 <p>至少會動了，雖然上不去</p>
 <p><img alt="" height="515" src="/images/coppeliaSim_OCYkVzkiwK1221.gif" width="960"/></p>
 <h2>W15</h2>
-<p><a href="https://nfuedu-my.sharepoint.com/:f:/g/personal/40923127_nfu_edu_tw/EmoQNv7jK3hBsAW50SrU3xcBx1N3wqFfz_Rhv5NPhOZ9lA?e=8HxowM">檔案</a></p><h3>1.在solidworks進行繪圖</h3>
+<p><a href="https://nfuedu-my.sharepoint.com/:f:/g/personal/40923127_nfu_edu_tw/EmoQNv7jK3hBsAW50SrU3xcBx1N3wqFfz_Rhv5NPhOZ9lA?e=8HxowM">檔案</a></p>
+<h3>1.在solidworks進行繪圖</h3>
 <div class="winkVideoContainerClass"><video class="winkVideoClass" controls="controls" data-dirname="/static" data-varname="123" height="630" width="1008">
-<source src="/downloads/w15/wink/sw.mp4" type="video/mp4"/></video></div><h3>2.假設控制盒內有個電磁線圈進行加速，但沒有畫出來</h3>
+<source src="/downloads/w15/wink/sw.mp4" type="video/mp4"/></video></div>
+<h3>2.假設控制盒內有個電磁線圈進行加速，但沒有畫出來</h3>
 <p>就畫了個能放上軌道的底座</p>
-<p><img alt="" height="645" src="/images/w15_2.png" width="1026"/></p><h3>3.stl檔轉入coppeliasim</h3>
+<p><img alt="" height="645" src="/images/w15_2.png" width="1026"/></p>
+<h3>3.stl檔轉入coppeliasim</h3>
 <p></p>
 <div class="winkVideoContainerClass"><video class="winkVideoClass" controls="controls" data-dirname="/static" data-varname="123" height="630" width="1008">
-<source src="/downloads/w15/wink/cop.mp4" type="video/mp4"/></video></div><h3>4.設定sensor位置和程式施力</h3>
+<source src="/downloads/w15/wink/cop.mp4" type="video/mp4"/></video></div>
+<h3>4.設定sensor位置和程式施力</h3>
 <p></p>
 <div class="winkVideoContainerClass"><video class="winkVideoClass" controls="controls" data-dirname="/static" data-varname="123" height="630" width="1008">
 <source src="/downloads//w16/cp.mp4" type="video/mp4"/></video></div>
@@ -445,7 +420,8 @@ while True:
 # Stop the simulation
 sim.stopSimulation()
 </pre>
-<p><br/><br/><br/></p><h3>5.localhost控制自己的</h3>
+<p><br/><br/><br/></p>
+<h3>5.localhost控制自己的</h3>
 <p>使用這段程式碼控制</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 以下的 zmq 程式庫已經過修改, 可以在 IPv4 與 IPv6 環境下使用
 # 針對 CoppeliaSim 的 zmq 延伸程式, Python 需要安裝 cbor 與 pyzmq 等兩個模組
@@ -496,7 +472,8 @@ while True:
 
 # Stop the simulation
 sim.stopSimulation()</pre>
-<p></p><h3>6.ipv6控制其他人的</h3>
+<p></p>
+<h3>6.ipv6控制其他人的</h3>
 <p>把localhost改成ipv6 IP</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 以下的 zmq 程式庫已經過修改, 可以在 IPv4 與 IPv6 環境下使用
 # 針對 CoppeliaSim 的 zmq 延伸程式, Python 需要安裝 cbor 與 pyzmq 等兩個模組
@@ -551,4 +528,51 @@ sim.stopSimulation()
 <h2>W16</h2>
 <p></p>
 <div class="winkVideoContainerClass"><video class="winkVideoClass" controls="controls" data-dirname="/static" data-varname="123" height="630" width="1008">
-<source src="/downloads/w16/cp.mp4" type="video/mp4"/></video></div></div>
+<source src="/downloads/w16/cp.mp4" type="video/mp4"/></video></div>
+<h1>12</h1>
+<p></p>
+<p></p>
+<p>在網頁上執行 Brython 程式</p>
+<!-- 引入 Brython -->
+<script src="https://cdn.jsdelivr.net/npm/brython@3.9.5/brython.min.js" type="text/javascript"></script>
+<h4>排序後的學生</h4>
+<p><button id="executeButton">執行程式</button> </p>
+<h4>結果：</h4>
+<p><textarea cols="50" id="resultTextArea" readonly="readonly" rows="10"></textarea></p>
+<script type="text/python">
+        from browser import document, ajax
+
+        def process_data(file_content):
+            students = []
+            for line_number, line in enumerate(file_content.splitlines(), 1):
+                data = line.strip().split('\t')
+                if len(data) == 2:
+                    try:
+                        number = int(data[0])
+                        tuple_str = data[1].strip('()')
+                        tuple_values = tuple(map(int, tuple_str.split(',')))
+                        students.append((number, tuple_values))
+                    except ValueError as e:
+                        continue
+
+            sorted_students = sorted(students, key=lambda x: (x[1][0], x[1][1]))
+
+            result_textarea = document.getElementById('resultTextArea')
+            result_textarea.value = ''  # 清空文本區域
+
+            for student in sorted_students:
+                result_textarea.value += f"學號: {student[0]}, 座位號: {student[1]}\n"
+
+        def get_data(response):
+            if response.status == 200:
+                file_content = response.text
+                process_data(file_content)
+
+        def execute_program(ev):
+            url = 'https://mde.tw/cadnote/downloads/2a_w12_seat.txt'  # 更換成你的檔案路徑
+            ajax.get(url, oncomplete=get_data)
+
+        # 當按鈕被點擊時執行程式
+        document["executeButton"].bind("click", execute_program)
+    
+</script></div>

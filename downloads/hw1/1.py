@@ -5,7 +5,7 @@ from zmqRemoteApi_IPv6 import RemoteAPIClient
 # 由於在 zmq 程式執行時, 希望讓使用者可以透過鍵盤 (或其他電子電機訊號) 指令控制遠端的機電模擬場景
 # Python 程式環境還需要安裝 keyboard 模組, pip install keyboard
 import keyboard
-
+import time
 # 利用以下程式碼連接 CoppeliaSim remote API server
 #第一個輸入變數若為 localhost 則只能控制與程式同在的場景
 # 但若第一輸入變數為可連外的 IPv4 或 IPv6 address, 則可用來控制遠端電腦上的模擬場景
@@ -27,7 +27,6 @@ sensor = sim.getObject('./sensor')
 sim.setObjectInt32Param(marble, sim.shapeintparam_static, 0)
 
 # 主模擬程序
-sim.addForceAndTorque(marble, [1, 0, 0], [0, 0, 0])
 while True:
     if keyboard.is_pressed('q'):
         # 模擬執行期間, 將滑鼠停在場景, 鍵盤按下 q 可以終止模擬
@@ -41,10 +40,10 @@ while True:
 
     # 當鋼球碰觸感測器時
     if res > 0:
-        if current_position1[0] < current_position2[0]:
+  
             # 對鋼球質心施以一個向量力
-            sim.addForceAndTorque(marble, [2, 0, 0], [0, 0, 0])
+            sim.addForceAndTorque(marble, [500, 0, -70], [0, 0.5, 0])
             print("加速")
-
+    time.sleep(0.1)
 # Stop the simulation
 sim.stopSimulation()
