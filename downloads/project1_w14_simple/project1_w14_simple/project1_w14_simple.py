@@ -25,14 +25,17 @@ while True:
 
     if res > 0:
         print("碰到了")
+        print(current_position1,current_position2)
         if first_force:
-            sim.addForceAndTorque(marble, [530, 0, -70], [0, 0, 0])
+            sim.addForceAndTorque(marble, [400, 0, -70], [0, 0, 0])
             print("第一次施力")
+            time.sleep(0.1) 
             first_force = False  # 更新狀態為非第一次施力
-        elif current_position1[0] <current_position2[0]:
-            sim.addForceAndTorque(marble, [500, 0, -70], [0, 0, 0])
+        elif current_position1[0]<=current_position2[0]:
+            sim.addForceAndTorque(marble, [340, 0, -55], [0, 0, 0])
+            time.sleep(0.1) 
             print("之後的施力")
 
-    time.sleep(0.05)  # 放在迴圈最後一行，確保每次迭代之後暫停 0.1 秒
+    #time.sleep(0.05)  # 放在迴圈最後一行，確保每次迭代之後暫停 0.1 秒
 
 sim.stopSimulation()
